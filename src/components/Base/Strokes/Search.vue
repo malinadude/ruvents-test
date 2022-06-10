@@ -1,24 +1,20 @@
 <template>
-  <div class="base-search">
-    <input id="base-search-field" v-model="query" type="text"/>
-    <label for="base-search-field">
-      <button type="button" @click="search">Поиск</button>
-    </label>
+  <div class="base-strokes-search">
+    <CommonSearch @search="search" />
   </div>
 </template>
 
 <script>
+import { CommonSearch } from "@/components/common";
+
 export default {
   name: "BaseStrokesSearch",
-  props: {
-    apiService: {
-      type: Object,
-      required: true,
-    },
+  components: {
+    CommonSearch,
   },
   methods: {
-    search() {
-      this.apiService.search();
+    search(query) {
+      this.$store.dispatch("baseStrokes/putSearchQuery", query);
     },
   },
 };

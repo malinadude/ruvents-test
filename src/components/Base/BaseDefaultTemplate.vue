@@ -9,6 +9,10 @@
     <div class="default-base-template__search">
       <slot name="search"></slot>
     </div>
+
+    <div class="default-base-template__content">
+      <slot name="content"></slot>
+    </div>
   </div>
 </template>
 

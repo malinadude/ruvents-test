@@ -26,16 +26,26 @@ export default {
 
       for (let i = 0; i < 100; i++) {
         stroke += characters.charAt(
-            Math.floor(Math.random() * charactersLength)
+          Math.floor(Math.random() * charactersLength)
         );
       }
 
       return stroke;
     },
     async generateBase() {
-      for (let i = 0; i < 1000; i++) {
-        await this.apiService.set({val: this.generateRandomString()});
+      const totalEntries = 10000;
+      const t0 = performance.now();
+      for (let i = 0; i < totalEntries; i++) {
+        await this.apiService.set(this.generateRandomString());
       }
+      const t1 = performance.now();
+      console.log(
+        "Generate Took",
+        (t1 - t0).toFixed(4),
+        "milliseconds to generate"
+      );
+      // 10k записей - стабильно 7 миллисекунд на моем железе
+      // 10kk записей | 10.000.000 (тз записи) ÷ 10.000 (10к записей из теста) × 7 (секунды нашего теста) ÷ 60 (секунд в минуте) = 116,6666666666667 (минут займет генерация 10кк записей)
     },
     async clearBase() {
       await this.apiService.clear();

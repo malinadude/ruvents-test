@@ -12,8 +12,11 @@ export default class StrokeApiService {
   async get(key) {
     return (await this.db).get("strokes", key);
   }
+  async getAll() {
+    return (await this.db).getAll("strokes");
+  }
   async set(val) {
-    return (await this.db).add("strokes", val);
+    return (await this.db).add("strokes", { val });
   }
   async clear() {
     return (await this.db).clear("strokes");
@@ -21,7 +24,12 @@ export default class StrokeApiService {
   async keys() {
     return (await this.db).getAllKeys("strokes");
   }
-  async search() {
-    console.log(await this.db);
+  async search(query) {
+    const strokes = await this.getAll();
+    const regExp = new RegExp(`^${query}`, "g");
+
+    return strokes.filter((stroke) => {
+      return stroke.val.match(regExp);
+    });
   }
 }

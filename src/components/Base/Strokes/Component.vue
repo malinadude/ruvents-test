@@ -1,27 +1,33 @@
 <template>
-  <BaseDefaultTemplate :title="title">
+  <BaseDefaultTemplate :title="title" class="base-strokes-component">
     <template #functional>
-      <Functional :apiService="apiService"/>
+      <Functional :apiService="apiService" />
     </template>
 
     <template #search>
-      <Search :apiService="apiService"/>
+      <Search :apiService="apiService" />
+    </template>
+
+    <template #content>
+      <Content :apiService="apiService" />
     </template>
   </BaseDefaultTemplate>
 </template>
 
 <script>
 import StrokeApiService from "@/services/base/StrokeApiService";
-
 import BaseDefaultTemplate from "@/components/Base/BaseDefaultTemplate";
+
 import Functional from "./Functional";
 import Search from "./Search";
+import Content from "./Content";
 
 export default {
   components: {
     BaseDefaultTemplate,
     Functional,
     Search,
+    Content,
   },
   data() {
     return {
