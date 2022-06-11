@@ -1,12 +1,5 @@
 <template>
-  <v-layout
-    column
-    align-center
-    :class="{
-      'base-strokes-content': true,
-      'base-strokes-content--loading': loading,
-    }"
-  >
+  <v-layout column align-center class="base-strokes-content">
     <v-flex class="base-strokes-content__counter" v-show="strokesLength">
       Найденных совпадений: {{ strokesLength }}
     </v-flex>
