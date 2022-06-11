@@ -2,8 +2,16 @@
   <div class="base-strokes-functional">
     <div class="base-strokes-functional__container">
       <div class="base-strokes-functional__buttons">
-        <button type="button" @click="generateBase">Сгенерировать базу</button>
-        <button type="button" @click="clearBase">Очистить базу</button>
+        <button type="button" :disabled="loading" @click="generateBase">
+          Сгенерировать базу
+        </button>
+        <button
+          type="button"
+          :disabled="clearBaseActivityState || loading"
+          @click="clearBase"
+        >
+          Очистить базу
+        </button>
       </div>
     </div>
   </div>
@@ -16,6 +24,19 @@ export default {
     apiService: {
       type: Object,
       required: true,
+    },
+    loading: {
+      type: Boolean,
+      required: true,
+    },
+    strokesTotal: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    clearBaseActivityState() {
+      return !this.strokesTotal;
     },
   },
   methods: {
@@ -34,10 +55,15 @@ export default {
     },
     async generateBase() {
       const totalEntries = 10000;
+
       const t0 = performance.now();
+
+      await this.$store.dispatch("baseStrokesLoading/putLoading", true);
       for (let i = 0; i < totalEntries; i++) {
         await this.apiService.set(this.generateRandomString());
       }
+      await this.$store.dispatch("baseStrokesLoading/putLoading", false);
+
       const t1 = performance.now();
       console.log(
         "Generate Took",
@@ -48,7 +74,9 @@ export default {
       // 10kk записей | 10.000.000 (тз записи) ÷ 10.000 (10к записей из теста) × 7 (секунды нашего теста) ÷ 60 (секунд в минуте) = 116,6666666666667 (минут займет генерация 10кк записей)
     },
     async clearBase() {
+      await this.$store.dispatch("baseStrokesLoading/putLoading", true);
       await this.apiService.clear();
+      await this.$store.dispatch("baseStrokesLoading/putLoading", false);
     },
   },
 };

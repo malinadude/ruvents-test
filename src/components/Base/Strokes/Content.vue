@@ -1,10 +1,15 @@
 <template>
-  <div class="base-strokes-content">
+  <div
+    :class="{
+      'base-strokes-content': true,
+      'base-strokes-content--loading': loading,
+    }"
+  >
     <div class="base-strokes-content__list">
       <div
         class="base-strokes-content__item"
         v-for="stroke in strokes"
-        :key="stroke.val"
+        :key="stroke.id"
       ></div>
     </div>
   </div>
@@ -20,6 +25,10 @@ export default {
       type: Object,
       required: true,
     },
+    loading: {
+      type: Boolean,
+      required: true,
+    },
   },
   data() {
     return {
@@ -27,17 +36,21 @@ export default {
     };
   },
   computed: {
-    ...mapState("baseStrokes", ["searchQuery"]),
+    ...mapState("baseStrokesSearch", ["query"]),
   },
   watch: {
-    searchQuery() {
+    query() {
       this.search();
     },
   },
   methods: {
     async search() {
       const t0 = performance.now();
-      this.strokes = await this.apiService.search(this.searchQuery);
+
+      await this.$store.dispatch("baseStrokesLoading/putLoading", true);
+      this.strokes = await this.apiService.search(this.query);
+      await this.$store.dispatch("baseStrokesLoading/putLoading", false);
+
       const t1 = performance.now();
       console.log(
         "Search Took",

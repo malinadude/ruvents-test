@@ -21,8 +21,8 @@ export default class StrokeApiService {
   async clear() {
     return (await this.db).clear("strokes");
   }
-  async keys() {
-    return (await this.db).getAllKeys("strokes");
+  async count() {
+    return (await this.db).count("strokes");
   }
   async search(query) {
     const strokes = await this.getAll();

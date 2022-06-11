@@ -1,22 +1,4 @@
-const state = {
-  searchQuery: "",
-};
+import baseStrokesLoading from "./loading";
+import baseStrokesSearch from "./search";
 
-const mutations = {
-  PUT_SEARCH_QUERY(state, searchQuery) {
-    state.searchQuery = searchQuery;
-  },
-};
-
-const actions = {
-  putSearchQuery({ commit }, searchQuery) {
-    return commit("PUT_SEARCH_QUERY", searchQuery);
-  },
-};
-
-export default {
-  namespaced: true,
-  state,
-  actions,
-  mutations,
-};
+export { baseStrokesLoading, baseStrokesSearch };
