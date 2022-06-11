@@ -1,5 +1,15 @@
 # ruvents-test
 
+### Electron compiles and minifies for production
+```
+electron:build
+```
+
+### Electron compiles and hot-reloads for development
+```
+electron:serve
+```
+
 ## Project setup
 ```
 npm install
