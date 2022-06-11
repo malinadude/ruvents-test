@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      title: "База 'Strokes'",
+      title: "База «Strokes»",
       apiService: new StrokeApiService(),
       strokesTotal: 0,
     };
