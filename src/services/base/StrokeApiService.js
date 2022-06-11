@@ -9,9 +9,6 @@ export default class StrokeApiService {
     });
   }
 
-  async get(key) {
-    return (await this.db).get("strokes", key);
-  }
   async getAll() {
     return (await this.db).getAll("strokes");
   }
