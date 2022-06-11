@@ -1,5 +1,8 @@
 # ruvents-test
 
+## Форма добавления/поиска в БД (IndexDB) записей 
+### Реализовано с технологиями Vue-CLI, Electron, Vuex, Vuetify, idb (для работы с IndexDB)
+
 ### Electron compiles and minifies for production
 ```
 electron:build
