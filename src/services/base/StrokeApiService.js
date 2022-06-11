@@ -25,6 +25,10 @@ export default class StrokeApiService {
     return (await this.db).count("strokes");
   }
   async search(query) {
+    if (!query) {
+      return [];
+    }
+
     const strokes = await this.getAll();
     const regExp = new RegExp(`^${query}`, "g");
 

@@ -1,6 +1,6 @@
 <template>
   <div class="base-strokes-search">
-    <CommonSearch :disabled="loading" @search="search" />
+    <CommonSearch :disabled="searchActivityState" @search="search" />
   </div>
 </template>
 
@@ -13,6 +13,15 @@ export default {
     loading: {
       type: Boolean,
       required: true,
+    },
+    strokesTotal: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    searchActivityState() {
+      return this.loading || !this.strokesTotal;
     },
   },
   components: {

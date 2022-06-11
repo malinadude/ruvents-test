@@ -5,12 +5,18 @@
       'base-strokes-content--loading': loading,
     }"
   >
+    <div class="base-strokes-content__counter" v-show="strokesLength">
+      {{ strokesLength }}
+    </div>
+
     <div class="base-strokes-content__list">
       <div
         class="base-strokes-content__item"
         v-for="stroke in strokes"
         :key="stroke.id"
-      ></div>
+      >
+        {{ stroke.val }}
+      </div>
     </div>
   </div>
 </template>
@@ -37,8 +43,16 @@ export default {
   },
   computed: {
     ...mapState("baseStrokesSearch", ["query"]),
+    strokesLength() {
+      return this.strokes.length;
+    },
   },
   watch: {
+    loading(state) {
+      if (state) {
+        this.strokes = [];
+      }
+    },
     query() {
       this.search();
     },
@@ -53,9 +67,9 @@ export default {
 
       const t1 = performance.now();
       console.log(
-        "Search Took",
+        "Поиск выполнен за ",
         (t1 - t0).toFixed(4),
-        "milliseconds to generate",
+        "мс",
         this.strokes
       );
       // на 10k записей - стабильно меньше секунды (за 30мс нашел 181 запись на поисковую строку 'B')
