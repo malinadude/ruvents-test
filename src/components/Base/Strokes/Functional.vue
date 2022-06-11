@@ -1,24 +1,27 @@
 <template>
-  <div class="base-strokes-functional">
-    <div class="base-strokes-functional__container">
-      <div class="base-strokes-functional__buttons">
-        <button
-          type="button"
-          :disabled="generateBaseActivityState"
-          @click="generateBase"
-        >
-          Сгенерировать базу
-        </button>
-        <button
-          type="button"
-          :disabled="clearBaseActivityState"
-          @click="clearBase"
-        >
-          Очистить базу
-        </button>
-      </div>
-    </div>
-  </div>
+  <v-layout align-center justify-space-between class="base-strokes-functional">
+    <v-flex class="base-strokes-functional__item">
+      <v-btn
+        elevation="2"
+        type="button"
+        :disabled="generateBaseActivityState"
+        @click="generateBase"
+      >
+        Сгенерировать базу
+      </v-btn>
+    </v-flex>
+
+    <v-flex class="base-strokes-functional__item">
+      <v-btn
+        elevation="2"
+        type="button"
+        :disabled="clearBaseActivityState"
+        @click="clearBase"
+      >
+        Очистить базу
+      </v-btn>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -40,7 +43,7 @@ export default {
   },
   computed: {
     generateBaseActivityState() {
-      return this.strokesTotal || this.loading;
+      return !!this.strokesTotal || this.loading;
     },
     clearBaseActivityState() {
       return !this.strokesTotal || this.loading;
@@ -85,3 +88,31 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "~vuetify/src/styles/settings/_variables";
+
+.base-strokes-functional {
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    flex-direction: column;
+  }
+
+  &__item {
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      width: 100%;
+    }
+
+    &:not(:last-child) {
+      margin-right: 15px;
+
+      @media #{map-get($display-breakpoints, 'xs-only')} {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+    }
+    button {
+      width: 100%;
+    }
+  }
+}
+</style>

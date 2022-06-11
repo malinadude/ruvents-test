@@ -1,11 +1,13 @@
 <template>
-  <div id="app">
-    <BaseStrokesComponent/>
-  </div>
+  <v-app>
+    <v-main>
+      <BaseStrokesComponent />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import {BaseStrokesComponent} from "./components/Base";
+import { BaseStrokesComponent } from "./components/Base";
 
 export default {
   name: "App",
@@ -14,5 +16,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

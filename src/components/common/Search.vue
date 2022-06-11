@@ -1,17 +1,19 @@
 <template>
-  <div class="search">
-    <input
-      id="search-field"
-      :disabled="functionalActivityState"
-      v-model="query"
-      type="text"
-    />
-    <label for="search-field">
-      <button type="button" :disabled="functionalActivityState" @click="search">
+  <v-layout align-center class="search">
+    <v-flex class="search__item">
+      <v-text-field
+        hide-details="true"
+        :disabled="functionalActivityState"
+        v-model="query"
+      >
+      </v-text-field>
+    </v-flex>
+    <v-flex class="search__item">
+      <v-btn type="button" :disabled="functionalActivityState" @click="search">
         Поиск
-      </button>
-    </label>
-  </div>
+      </v-btn>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -40,3 +42,13 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.search {
+  &__item {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+}
+</style>

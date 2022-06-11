@@ -1,24 +1,28 @@
 <template>
-  <div
+  <v-layout
+    column
+    align-center
     :class="{
       'base-strokes-content': true,
       'base-strokes-content--loading': loading,
     }"
   >
-    <div class="base-strokes-content__counter" v-show="strokesLength">
-      {{ strokesLength }}
-    </div>
+    <v-flex class="base-strokes-content__counter" v-show="strokesLength">
+      Найденных совпадений: {{ strokesLength }}
+    </v-flex>
 
-    <div class="base-strokes-content__list">
-      <div
-        class="base-strokes-content__item"
-        v-for="stroke in strokes"
-        :key="stroke.id"
-      >
-        {{ stroke.val }}
-      </div>
-    </div>
-  </div>
+    <v-flex>
+      <v-layout column class="base-strokes-content__list">
+        <v-flex
+          class="base-strokes-content__item"
+          v-for="stroke in strokes"
+          :key="stroke.id"
+        >
+          <p>{{ stroke.val }}</p>
+        </v-flex>
+      </v-layout>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -77,3 +81,12 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.base-strokes-content {
+  &__counter {
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+}
+</style>

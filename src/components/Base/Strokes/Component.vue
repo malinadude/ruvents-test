@@ -1,5 +1,9 @@
 <template>
-  <BaseDefaultTemplate :title="title" class="base-strokes-component">
+  <BaseDefaultTemplate
+    :title="title"
+    :loading="loading"
+    class="base-strokes-component"
+  >
     <template #functional>
       <Functional
         :loading="loading"
@@ -9,11 +13,7 @@
     </template>
 
     <template #search>
-      <Search
-        :loading="loading"
-        :strokes-total="strokesTotal"
-        :apiService="apiService"
-      />
+      <Search :loading="loading" :strokes-total="strokesTotal" />
     </template>
 
     <template #content>

@@ -1,7 +1,9 @@
 <template>
-  <div class="base-strokes-search">
-    <CommonSearch :disabled="searchActivityState" @search="search" />
-  </div>
+  <v-layout class="base-strokes-search">
+    <v-flex>
+      <CommonSearch :disabled="searchActivityState" @search="search" />
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
