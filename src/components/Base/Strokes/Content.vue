@@ -1,6 +1,11 @@
 <template>
-  <v-layout column align-center class="base-strokes-content">
-    <v-flex class="base-strokes-content__counter" v-show="strokesLength">
+  <v-layout
+    column
+    align-center
+    class="base-strokes-content"
+    v-show="strokesLength"
+  >
+    <v-flex class="base-strokes-content__counter">
       Найденных совпадений: {{ strokesLength }}
     </v-flex>
 
