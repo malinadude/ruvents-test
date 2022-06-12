@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { CommonSearch } from "@/components/common";
+import { CommonSearch } from "@/components/Common";
 
 export default {
   name: "BaseStrokesSearch",

@@ -5,7 +5,7 @@
       align-center
       class="default-base-template__block default-base-template__head"
     >
-      <LazyLoader class="default-base-template__loader" v-if="loading" />
+      <CommonLazyLoader class="default-base-template__loader" v-if="loading" />
 
       <v-flex class="default-base-template__block default-base-template__title">
         <h2>{{ title }}</h2>
@@ -35,11 +35,11 @@
 </template>
 
 <script>
-import { LazyLoader } from "@/components/common";
+import { CommonLazyLoader } from "@/components/Common";
 
 export default {
   name: "BaseDefaultTemplate",
-  components: { LazyLoader },
+  components: { CommonLazyLoader },
   props: {
     title: {
       type: String,
