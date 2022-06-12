@@ -5,6 +5,8 @@
       align-center
       class="default-base-template__block default-base-template__head"
     >
+      <LazyLoader class="default-base-template__loader" v-if="loading" />
+
       <v-flex class="default-base-template__block default-base-template__title">
         <h2>{{ title }}</h2>
       </v-flex>
@@ -20,8 +22,6 @@
       >
         <slot name="search"></slot>
       </v-flex>
-
-      <LazyLoader class="default-base-template__loader" v-if="loading" />
     </v-layout>
 
     <v-layout column align-center class="default-base-template__block">
