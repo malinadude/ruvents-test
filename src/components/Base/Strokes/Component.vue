@@ -23,13 +23,13 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import StrokeApiService from "@/services/base/StrokeApiService";
 import BaseDefaultTemplate from "@/components/Base/BaseDefaultTemplate";
 
 import Functional from "./Functional";
 import Search from "./Search";
 import Content from "./Content";
-import { mapState } from "vuex";
 
 export default {
   name: "BaseStrokesComponent",
