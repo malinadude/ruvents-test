@@ -17,7 +17,7 @@
     </template>
 
     <template #content>
-      <Content :loading="loading" :apiService="apiService" />
+      <Content :strokes-total="strokesTotal" :apiService="apiService" />
     </template>
   </BaseDefaultTemplate>
 </template>

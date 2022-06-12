@@ -64,7 +64,7 @@ export default {
       return stroke;
     },
     async generateBase() {
-      const totalEntries = 10000;
+      const totalEntries = 1000000;
 
       const t0 = performance.now();
 

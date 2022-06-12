@@ -28,8 +28,8 @@ export default {
       type: Object,
       required: true,
     },
-    loading: {
-      type: Boolean,
+    strokesTotal: {
+      type: Number,
       required: true,
     },
   },
@@ -45,13 +45,13 @@ export default {
     },
   },
   watch: {
-    loading(state) {
-      if (state) {
-        this.strokes = [];
-      }
-    },
     query() {
       this.search();
+    },
+    strokesTotal(total) {
+      if (!total) {
+        this.strokes = [];
+      }
     },
   },
   methods: {
@@ -69,7 +69,8 @@ export default {
         "мс",
         this.strokes
       );
-      // на 10k записей - стабильно меньше секунды (за 30мс нашел 181 запись на поисковую строку 'B')
+      // на 10k записей - стабильно меньше секунды (за 30мс)
+      // на 1kk записей - нашло 19.199 записей за 1581мс
     },
   },
 };

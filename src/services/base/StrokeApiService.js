@@ -4,13 +4,17 @@ export default class StrokeApiService {
   constructor() {
     this.db = openDB("Strokes", 1, {
       upgrade(db) {
-        db.createObjectStore("strokes", { keyPath: "id", autoIncrement: true });
+        const objectStore = db.createObjectStore("strokes", {
+          keyPath: "id",
+          autoIncrement: true,
+        });
+        objectStore.createIndex("val", "val", { unique: false });
       },
     });
   }
 
-  async getAll() {
-    return (await this.db).getAll("strokes");
+  async getAll(key) {
+    return (await this.db).getAll("strokes", key);
   }
   async set(val) {
     return (await this.db).add("strokes", { val });
@@ -26,11 +30,10 @@ export default class StrokeApiService {
       return [];
     }
 
-    const strokes = await this.getAll();
-    const regExp = new RegExp(`^${query}`, "g");
-
-    return strokes.filter((stroke) => {
-      return stroke.val.match(regExp);
-    });
+    const transaction = (await this.db).transaction("strokes", "readonly");
+    const objectStore = transaction.objectStore("strokes");
+    const range = IDBKeyRange.bound(query, query + "\uffff");
+    const index = objectStore.index("val");
+    return await index.getAll(range);
   }
 }

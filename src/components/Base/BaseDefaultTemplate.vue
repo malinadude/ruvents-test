@@ -1,6 +1,10 @@
 <template>
   <v-container fluid class="py-0 default-base-template">
-    <v-layout column align-center>
+    <v-layout
+      column
+      align-center
+      class="default-base-template__block default-base-template__head"
+    >
       <v-flex class="default-base-template__block default-base-template__title">
         <h2>{{ title }}</h2>
       </v-flex>
@@ -17,14 +21,16 @@
         <slot name="search"></slot>
       </v-flex>
 
+      <LazyLoader class="default-base-template__loader" v-if="loading" />
+    </v-layout>
+
+    <v-layout column align-center>
       <v-flex
         class="default-base-template__block default-base-template__content"
       >
         <slot name="content"></slot>
       </v-flex>
     </v-layout>
-
-    <LazyLoader class="default-base-template__loader" v-if="loading" />
   </v-container>
 </template>
 
@@ -49,8 +55,9 @@ export default {
 
 <style lang="scss">
 .default-base-template {
-  position: relative;
-
+  &__head {
+    position: relative;
+  }
   &__block {
     &:not(:last-child) {
       margin-bottom: 15px;
