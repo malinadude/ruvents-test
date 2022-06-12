@@ -1,30 +1,40 @@
-import { openDB } from "idb";
+import DefaultBaseApiService from "./DefaultBaseApiService";
 
-export default class StrokeApiService {
+export default class StrokeApiService extends DefaultBaseApiService {
   constructor() {
-    this.db = openDB("Strokes", 1, {
-      upgrade(db) {
-        const objectStore = db.createObjectStore("strokes", {
-          keyPath: "id",
-          autoIncrement: true,
-        });
-        objectStore.createIndex("val", "val", { unique: false });
+    super({
+      name: "Strokes",
+      version: 1,
+      objectStore: {
+        name: "strokes",
+        keyPath: "id",
+        autoIncrement: true,
+        indexes: [
+          {
+            name: "val",
+            keyPath: "val",
+            options: {
+              unique: false,
+            },
+          },
+        ],
       },
     });
   }
 
   async getAll(key) {
-    return (await this.db).getAll("strokes", key);
+    return await this.idbGetAll("strokes", key);
   }
   async set(val) {
-    return (await this.db).add("strokes", { val });
+    return await this.idbSet("strokes", { val });
   }
   async clear() {
-    return (await this.db).clear("strokes");
+    return await this.idbClear("strokes");
   }
   async count() {
-    return (await this.db).count("strokes");
+    return await this.idbCount("strokes");
   }
+
   async search(query) {
     if (!query) {
       return [];
