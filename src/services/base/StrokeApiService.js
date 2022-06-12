@@ -26,7 +26,7 @@ export default class StrokeApiService extends DefaultBaseApiService {
     return await this.idbGetAll("strokes", key);
   }
   async set(val) {
-    return await this.idbSet("strokes", { val });
+    return await this.idbSet("strokes", val);
   }
   async clear() {
     return await this.idbClear("strokes");

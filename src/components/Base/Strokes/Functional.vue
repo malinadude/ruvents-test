@@ -70,7 +70,7 @@ export default {
 
       await this.$store.dispatch("baseStrokesLoading/putLoading", true);
       for (let i = 0; i < totalEntries; i++) {
-        await this.apiService.set(this.generateRandomString());
+        await this.apiService.set({ val: this.generateRandomString() });
       }
       await this.$store.dispatch("baseStrokesLoading/putLoading", false);
 
