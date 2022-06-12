@@ -24,7 +24,7 @@
       <LazyLoader class="default-base-template__loader" v-if="loading" />
     </v-layout>
 
-    <v-layout column align-center>
+    <v-layout column align-center class="default-base-template__block">
       <v-flex
         class="default-base-template__block default-base-template__content"
       >
