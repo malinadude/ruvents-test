@@ -6,6 +6,6 @@
 
 <script>
 export default {
-  name: "LazyLoader",
+  name: "CommonLazyLoader",
 };
 </script>
