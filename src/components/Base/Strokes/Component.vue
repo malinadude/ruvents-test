@@ -25,7 +25,7 @@
 <script>
 import { mapState } from "vuex";
 import StrokesApiService from "@/services/base/StrokesApiService";
-import BaseDefaultTemplate from "@/components/Base/BaseDefaultTemplate";
+import BaseDefaultTemplate from "@/components/Base/DefaultTemplate";
 
 import Functional from "./Functional";
 import Search from "./Search";
