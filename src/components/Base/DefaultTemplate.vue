@@ -3,30 +3,30 @@
     <v-layout
       column
       align-center
-      class="default-base-template__block default-base-template__head"
+      class="default-base-template__content-block default-base-template__head"
     >
       <CommonLazyLoader class="default-base-template__loader" v-if="loading" />
 
-      <v-flex class="default-base-template__block default-base-template__title">
+      <v-flex class="default-base-template__content-block default-base-template__title">
         <h2>{{ title }}</h2>
       </v-flex>
 
       <v-flex
-        class="default-base-template__block default-base-template__functional"
+        class="default-base-template__content-block default-base-template__functional"
       >
         <slot name="functional"></slot>
       </v-flex>
 
       <v-flex
-        class="default-base-template__block default-base-template__search"
+        class="default-base-template__content-block default-base-template__search"
       >
         <slot name="search"></slot>
       </v-flex>
     </v-layout>
 
-    <v-layout column align-center class="default-base-template__block">
+    <v-layout column align-center class="default-base-template__content-block">
       <v-flex
-        class="default-base-template__block default-base-template__content"
+        class="default-base-template__content-block default-base-template__content"
       >
         <slot name="content"></slot>
       </v-flex>
@@ -58,7 +58,7 @@ export default {
   &__head {
     position: relative;
   }
-  &__block {
+  &__content-block {
     &:not(:last-child) {
       margin-bottom: 15px;
     }
