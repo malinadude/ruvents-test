@@ -24,7 +24,7 @@
 
 <script>
 import { mapState } from "vuex";
-import StrokeApiService from "@/services/base/StrokeApiService";
+import StrokesApiService from "@/services/base/StrokesApiService";
 import BaseDefaultTemplate from "@/components/Base/BaseDefaultTemplate";
 
 import Functional from "./Functional";
@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       title: "База «Strokes»",
-      apiService: new StrokeApiService(),
+      apiService: new StrokesApiService(),
       strokesTotal: 0,
     };
   },
