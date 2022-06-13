@@ -7,17 +7,17 @@
     <template #functional>
       <Functional
         :loading="loading"
-        :strokes-total="strokesTotal"
+        :strokesTotal="strokesTotal"
         :apiService="apiService"
       />
     </template>
 
     <template #search>
-      <Search :loading="loading" :strokes-total="strokesTotal" />
+      <Search :loading="loading" :strokesTotal="strokesTotal" />
     </template>
 
     <template #content>
-      <Content :strokes-total="strokesTotal" :apiService="apiService" />
+      <Content :strokesTotal="strokesTotal" :apiService="apiService" />
     </template>
   </BaseDefaultTemplate>
 </template>
