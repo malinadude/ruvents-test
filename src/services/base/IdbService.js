@@ -9,8 +9,8 @@ export default class IdbService {
     return openDB(targetDb.name, targetDb.version, {
       upgrade(db) {
         const objectStore = db.createObjectStore(targetDb.objectStore.name, {
-          keyPath: targetDb.objectStore.keyPath,
-          autoIncrement: targetDb.objectStore.autoIncrement,
+          keyPath: targetDb.objectStore.key.path,
+          autoIncrement: targetDb.objectStore.key.autoIncrement,
         });
 
         targetDb.objectStore.indexes.forEach((index) => {

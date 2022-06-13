@@ -7,8 +7,10 @@ export default class StrokesApiService extends IdbService {
       version: 1,
       objectStore: {
         name: "strokes",
-        keyPath: "id",
-        autoIncrement: true,
+        key: {
+          path: "id",
+          autoIncrement: true,
+        },
         indexes: [
           {
             name: "val",
