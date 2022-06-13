@@ -1,6 +1,6 @@
 import { openDB } from "idb";
 
-export default class StrokeApiService {
+export default class IdbService {
   constructor(targetDb) {
     this.db = this.idbInit(targetDb);
   }

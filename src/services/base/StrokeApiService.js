@@ -1,6 +1,6 @@
-import DefaultBaseApiService from "./DefaultBaseApiService";
+import IdbService from "./IdbService";
 
-export default class StrokeApiService extends DefaultBaseApiService {
+export default class StrokeApiService extends IdbService {
   constructor() {
     super({
       name: "Strokes",
