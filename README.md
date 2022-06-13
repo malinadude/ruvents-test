@@ -5,12 +5,12 @@
 
 ### Electron compiles and minifies for production
 ```
-electron:build
+npm run electron:build
 ```
 
 ### Electron compiles and hot-reloads for development
 ```
-electron:serve
+npm run electron:serve
 ```
 
 ## Project setup
